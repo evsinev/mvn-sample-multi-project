@@ -77,7 +77,7 @@
                 <version>0.5.1</version>
 
                 <configuration>
-                    <tagName>${project.artifactId}-${project.version}</tagName>
+                    <tagName>${project.version}</tagName>
                     <preRelease>true</preRelease>
                 </configuration>
 
