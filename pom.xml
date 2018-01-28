@@ -42,22 +42,19 @@
         <repository>
             <id>github</id>
             <name>github releases</name>
-            <url>https://api.github.com</url>
+            <url>github-releases://api.github.com</url>
         </repository>
     </distributionManagement>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>bintray-cy6ergn0m-maven</id>
-            <name>bintray-plugins</name>
-            <url>http://dl.bintray.com/cy6ergn0m/maven</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <build>
+        <extensions>
+            <extension>
+                <groupId>com.payneteasy.maven.wagon</groupId>
+                <artifactId>wagon-github-releases</artifactId>
+                <version>1.0-1-SNAPHOT</version>
+            </extension>
+        </extensions>
+
         <plugins>
             <plugin>
                 <inherited>true</inherited>
@@ -69,26 +66,6 @@
                     <target>1.6</target>
                     <debug>true</debug>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>cy.github</groupId>
-                <artifactId>github-release-plugin</artifactId>
-                <version>0.5.1</version>
-
-                <configuration>
-                    <tagName>${project.version}</tagName>
-                    <preRelease>true</preRelease>
-                </configuration>
-
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>gh-upload</goal>
-                        </goals>
-                        <phase>deploy</phase>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
